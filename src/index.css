@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'ZCOOL KuaiLe', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Slackey', cursive;
+  }
+}
+
+.hero-bg {
+  background: linear-gradient(135deg, #FF4D8D 0%, #FF6B6B 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.1;
+  animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-50%, -50%); }
+}
+
+.play-button {
+  @apply relative px-12 py-5 text-black font-slackey text-xl rounded-full overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+}
+
+.feature-card {
+  @apply bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-3xl p-10 hover:from-white/10 hover:to-white/15 transition-all duration-500 border border-white/10;
+}
+
+.game-card {
+  @apply relative overflow-hidden;
+}
+
+.game-card::after {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300;
+}
+
+.game-card:hover::after {
+  @apply opacity-100;
+}
+
+.nav-link {
+  @apply relative text-white/80 hover:text-white transition-colors duration-300;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+}
